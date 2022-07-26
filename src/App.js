@@ -8,10 +8,33 @@ class App extends Component {
     //?
     this.state = {
       name: { firstName: "Albert000", lastName: "Chen" },
-      monsters: [{ name: 'Aaa' }, { name: 'BBB' }, { name: "CCC" }]
+      monsters: [
+        {
+          name: 'Aaa',
+          id: '1234445'
+        },
+        {
+          name: 'BBB',
+          id: '13dafa'
+        },
+        {
+          name: "CCC",
+          id: 'fsdfsfs'
+        }]
     }
+  }
 
-
+  componentDidMount(){
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(response=>response.json())
+    .then((users)=>
+    this.setState(
+      ()=>{
+        return {monsters:users}
+      },
+      ()=>{
+        console.log('this.state',this.state)
+      }))
   }
   render() {
     return (
@@ -36,8 +59,15 @@ class App extends Component {
             }
 
           }>Change Name</button>
-          {this.state.monsters.map((monster)=>{return <h1>{monster.name}</h1>})}
+          {this.state.monsters.map((monster) => {
+            return (
+              <div key={monster.id}
+              ><h1 >{monster.name}</h1>
+              </div>
+            )
+          })}
           {/* put call back function in map() */}
+          {/* key value optimalize, if we update one of it, react will know it  */}
         </header>
 
       </div>);
