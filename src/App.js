@@ -1,7 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
 import { Component } from 'react';
-import { render } from '@testing-library/react';
 import CardList from './components/card-list/card-list.component';
 import SearchBox from './components/search-box/search-box.component';
 
@@ -78,13 +76,12 @@ class App extends Component {
     })
     return (
       <div className="App">
-        <input className='search-box' type='search' placeholder='search monster'
+        {/* <input className='search-box' type='search' placeholder='search monster'
 
-          onChange={onSearchChange}></input>
+          onChange={onSearchChange}></input> */}
         {/* eventhandler */}
-        <header className="App-header">
-          <p>Hi {this.state.name.firstName + "  " + this.state.name.lastName}</p>
-          <button onClick={
+        {/* <p>Hi {this.state.name.firstName + "  " + this.state.name.lastName}</p> */}
+        {/* <button onClick={
             () => {
               this.setState(
                 // async
@@ -100,24 +97,26 @@ class App extends Component {
               )
             }
 
-          }>Change Name</button>
-
-          <SearchBox claaName='search-box'
-            onChangeHandler={onSearchChange}
-            placeholder='search monster' />
-          <CardList monsters={filteredMonsters} />
+          }>Change Name</button> */}
 
 
-          {/* {filteredMonsters.map((monster) => {
+        {/* if I pust className here just a props but not working  */}
+        <SearchBox
+          className='search-box-monsters'
+          onChangeHandler={onSearchChange}
+          placeholder='search monster' />
+        <CardList monsters={filteredMonsters} />
+
+
+        {/* {filteredMonsters.map((monster) => {
             return (
               <div key={monster.id}
               ><h1 >{monster.name}</h1>
               </div>
             )
           })} */}
-          {/* put call back function in map() */}
-          {/* key value optimalize, if we update one of it, react will know it  */}
-        </header>
+        {/* put call back function in map() */}
+        {/* key value optimalize, if we update one of it, react will know it  */}
 
       </div>);
   }

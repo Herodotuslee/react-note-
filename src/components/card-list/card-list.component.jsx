@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import './card-list.styles.css'
 
 // component will rerender when props change
 class CardList extends Component {
@@ -8,14 +9,18 @@ class CardList extends Component {
         console.log('this.props', this.props)
         console.log('render from card-list')
         return (
-            <div>
-                <h1>  Hello I'm the Card CardList Component</h1>
-                <div>
-                    <p>Test</p>
-                </div>
-                <div>
-                    {monsters.map((monster) => <h1 key={monster.id}>{monster.name}</h1>)}
-                </div>
+            <div className='card-list'>
+                {monsters.map((monster) => {
+                    const { name, email, id } = monster;
+                    return (
+                        <div className='card-container' key={id}>
+                            <img alt={`monster ${name}`} src={`https://robohash.org/${id}?set=set2&size=180x180`} />
+                            <h2>{name}</h2>
+                            <p>{email}</p>
+                        </div>
+                    )
+                }
+                )}
             </div>
         )
     }
