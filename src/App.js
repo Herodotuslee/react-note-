@@ -3,6 +3,7 @@ import './App.css';
 import { Component } from 'react';
 import { render } from '@testing-library/react';
 import CardList from './components/card-list/card-list.component';
+import SearchBox from './components/search-box/search-box.component';
 
 // component, reuseable
 // single responsibility
@@ -17,7 +18,7 @@ class App extends Component {
     this.state = {
       name: { firstName: "Albert000", lastName: "Chen" },
       searchField: "",
-      monsters:[]
+      monsters: []
       // monsters: [
       //   {
       //     name: 'Aaa',
@@ -101,8 +102,11 @@ class App extends Component {
 
           }>Change Name</button>
 
+          <SearchBox claaName='search-box'
+            onChangeHandler={onSearchChange}
+            placeholder='search monster' />
+          <CardList monsters={filteredMonsters} />
 
-          <CardList  monsters={filteredMonsters}/>
 
           {/* {filteredMonsters.map((monster) => {
             return (
